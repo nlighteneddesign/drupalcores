@@ -14,7 +14,7 @@ else
   cd ../
 fi
 
-docker run --rm -it -v "$PWD":/data ruby bash -c 'cd /data && ./cores.rb ${drupalVersions[$i]} > ./contributors/main.html'
+docker run --rm -it -v "$PWD":/data ruby bash -c 'cd /data && ./cores.rb > ./contributors/main.html'
 
 declare -a drupalVersions=(
   "11.2.2"
@@ -47,10 +47,12 @@ declare -a versionDates=(
     cd ./drupal
     git switch ${drupalVersions[$i]}-version 2>/dev/null || git switch -c ${drupalVersions[$i]}-version tags/${drupalVersions[$i]}
     cd ..
-    docker run --rm -it -v "$PWD":/data ruby bash -c "cd /data && ./cores.rb ${drupalVersions[$i]} --since=${versionDates[$i]} > ./contributors/${drupalVersions[$i]}.html"
+    docker run --rm -it -v "$PWD":/data ruby bash -c "cd /data && ./cores.rb --since=${versionDates[$i]} > ./contributors/${drupalVersions[$i]}.html"
   done
 
+cd ./drupal
 git switch 4.3.2-version 2>/dev/null || git switch -c 4.3.2-version tags/4.3.2
+cd ..
 docker run --rm -it -v "$PWD":/data ruby bash -c 'cd /data && ./cores.rb > ./contributors/4.3.2.html'
 git checkout 11.x
 

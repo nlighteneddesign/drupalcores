@@ -3,6 +3,8 @@
 log_args = ARGV[0] || ''
 git_command = 'git --git-dir=drupal/.git --work-tree=drupal log ' + log_args + ' -s --format=%s'
 
+# File.write("contributors/output.txt", git_command, mode: "a")
+
 Encoding.default_external = Encoding::UTF_8
 require 'erb'
 require 'yaml'
