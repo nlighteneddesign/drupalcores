@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-log_args = ARGV[0] || '--since=2011-03-09'
-git_command = 'git --git-dir=drupal/.git --work-tree=drupal log 8.0.x ' + log_args + ' -s --format=%s'
+log_args = ARGV[0] || ''
+git_command = 'git --git-dir=drupal/.git --work-tree=drupal log ' + log_args + ' -s --format=%s'
 
 Encoding.default_external = Encoding::UTF_8
 require 'erb'
@@ -51,7 +51,7 @@ __END__
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <title>DrupalCores</title>
-  <meta name="description" content="A simple list of all contributors to Drupal 8 core">
+  <meta name="description" content="A simple list of all contributors to Drupal core">
   <meta name="author" content="Eric J. Duran">
   <link type="text/plain" rel="author" href="http://ericduran.github.com/drupalcores/humans.txt" />
   <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
@@ -59,9 +59,10 @@ __END__
 <body>
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/ericduran/drupalcores">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/ericduran/drupalcores">View original on GitHub</a>
+          <span>Original author Eric J. Duran</span>
           <h1 id="project_title">DrupalCores</h1>
-          <h2 id="project_tagline">A very basic table of all contributors to Drupal 8 Core</h2>
+          <h2 id="project_tagline">A very basic table of all contributors to Drupal Core</h2>
         </header>
     </div>
 
